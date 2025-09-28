@@ -1,5 +1,4 @@
-
-<h2>Project Description</h2>
+<h2>Project Description hello</h2>
 
 <h3> vecner :  A set of tools for lexical-based NER </h3>
 
@@ -7,19 +6,21 @@
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 [![mypy checked](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![black](https://camo.githubusercontent.com/d91ed7ac7abbd5a6102cbe988dd8e9ac21bde0a73d97be7603b891ad08ce3479/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f64652532307374796c652d626c61636b2d3030303030302e737667)](https://pypi.org/project/black/)
+
 <!-- [![unittest](https://github.com/python/cpython/workflows/Tests/badge.svg)](https://docs.python.org/3/library/unittest.html) -->
 
 A library of tools for lexical-based Named Entity Recognition (NER), based on word vector representations to expand lexicon terms. Vecner is particularly helpful in instances such as: a) the lexicon contains limited terms ; b) interested in domain-specific NER and c) a large unlabelled corpora is available.
 
-An example: if in the lexicon we have the only the word *football* under the label **sports**, we can expect that similar terms include *soccer*, *basketball* and others. As such, we can leverage that to our advantage when we have a lexicon with limited terms (see Examples below), by expanding the terms under **sports** using a w2vec model. This works also well when we have a domain-specific problem and a corpus, which we use to train a w2vec model. As such, the similar terms suddenly become much more relevant to our application.
+An example: if in the lexicon we have the only the word _football_ under the label **sports**, we can expect that similar terms include _soccer_, _basketball_ and others. As such, we can leverage that to our advantage when we have a lexicon with limited terms (see Examples below), by expanding the terms under **sports** using a w2vec model. This works also well when we have a domain-specific problem and a corpus, which we use to train a w2vec model. As such, the similar terms suddenly become much more relevant to our application.
 
 Vecner supports:
-* Exact entity matching based on [Spacy](https://spacy.io/)'s PhraseMatcher
-* Finding entities based on similar terms in the lexicon.
-* Chunking by:
-  * Using [Spacy](https://spacy.io/)'s noun chunking
-  * Using entity edges from a dependency graph
-  * Using a user-defined script ([see more here](#user-defined))
+
+- Exact entity matching based on [Spacy](https://spacy.io/)'s PhraseMatcher
+- Finding entities based on similar terms in the lexicon.
+- Chunking by:
+  - Using [Spacy](https://spacy.io/)'s noun chunking
+  - Using entity edges from a dependency graph
+  - Using a user-defined script ([see more here](#user-defined))
 
 ### Installation
 
@@ -106,6 +107,7 @@ output = extendedmatcher.map(
     ids = output['ids']
 )
 ```
+
 ![food example](examples/example_food.png)
 
 <!-- <div class="entities" style="line-height: 2.5; direction: ltr">The burger had <mark class="entity" style="background: #FFAC33; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    absolutely no flavor    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">food</span></mark> , the place itself was <mark class="entity" style="background: #33FFC1; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    totally dirty    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">condition</span></mark> , the burger <mark class="entity" style="background: #FFAC33; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    was overcooked    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">food</span></mark> and <mark class="entity" style="background: #DDFF33; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    the staff incredibly rude    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">service</span></mark> .</div> -->
@@ -181,6 +183,7 @@ output = thresholdmatcher.map(
     ids = output['ids']
 )
 ```
+
 ![bio example](examples/example_bio.png)
 
 <!-- <div class="entities" style="line-height: 2.5; direction: ltr">I am really amazed by <mark class="entity" style="background: #DDFF33; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    the overall survival    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">efficacy</span></mark> , however still concerned with <mark class="entity" style="background: #33FFC1; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    3-year treatment duration    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">time</span></mark> . Would be interesting to see <mark class="entity" style="background: #FFAC33; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    the predictive biomarkers    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">diagnostics</span></mark> in <mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">    NSCLC advanced patients    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">patient groups</span></mark> .</div> -->
@@ -242,13 +245,14 @@ output = thresholdmatcher.map(
 ```
 
 where the custom script from which this reads from, must:
-* be named as  ```custom_file.py```
-* have the function ```rule_chunker```, with input arguments:
-  * doc
-  * ents
-  * ids
 
-You can find and play with the following [example script](examples/example-custom_file.py) prepared. To run it simply rename to ```custom_file.py``` in the directory in which you will run your main script. To prepare your own you can follow the template below:
+- be named as `custom_file.py`
+- have the function `rule_chunker`, with input arguments:
+  - doc
+  - ents
+  - ids
+
+You can find and play with the following [example script](examples/example-custom_file.py) prepared. To run it simply rename to `custom_file.py` in the directory in which you will run your main script. To prepare your own you can follow the template below:
 
 ```python
 ## Template - custom_file.py
@@ -296,14 +300,12 @@ def rule_chunker(
     return new_ents
 ```
 
-
 <h2> Third Party Licenses </h2>
 
 Third Party Libraries licenses for the dependencies:\
 [Spacy](https://github.com/explosion/spaCy) : [MIT License](https://github.com/explosion/spaCy/blob/master/LICENSE)\
 [Gensim](https://github.com/RaRe-Technologies/gensim) : [LGPL-2.1 license](https://github.com/RaRe-Technologies/gensim/blob/develop/COPYING)\
 [NLTK](https://github.com/nltk/nltk) : [Apache License 2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
-
 
 <h2> License </h2>
 <!-- Copyright 2020 AXA Group Operations S.A. -->
